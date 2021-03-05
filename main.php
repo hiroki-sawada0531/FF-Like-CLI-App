@@ -14,9 +14,9 @@ $members[] = new WhiteMage('ユウナ');
 $members[] = new BlackMage('ルールー');
 
 $enemies = array();
-$enemies[] = new Enemy('ゴブリン');
-$enemies[] = new Enemy('ボム');
-$enemies[] = new Enemy('モルボル');
+$enemies[] = new Enemy('ゴブリン', 20);
+$enemies[] = new Enemy('ボム', 25);
+$enemies[] = new Enemy('モルボル', 30);
 
 $turn = 1;
 
@@ -28,8 +28,18 @@ echo $tiida->getName() . " : " . $tiida->getHitPoint() . "/" . $tiida::MAX_HITPO
 echo $goblin->getName() . " : " . $goblin->getHitPoint() . "/" . $goblin::MAX_HITPOINT . "\n";
 echo "\n";
 
-$tiida->doAttack($goblin);
+foreach ($members as $member) {
+    $enemyIndex = rand(0,count($enemies) -1);
+    $enemy = $enemies[$enemyIndex];
+    if (get_class($member) == "WhiteMage") {
+        $member->doAttackWhiteMage($enemy,$member);
+    } else {
+        $member->doAttack($enemy);
+    }
+    echo "\n";
+}
 echo "\n";
+
 $goblin->doAttack($tiida);
 echo "\n";
 
