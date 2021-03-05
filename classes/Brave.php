@@ -3,7 +3,7 @@
 class Brave extends Human
 {
     const MAX_HITPOINT = 120;
-    public $hitPoint = self::MAX_HITPOINT;
+    private $hitPoint = self::MAX_HITPOINT;
     public $attackPoint = 30;
 
     public function doAttack($enemy)
@@ -17,5 +17,13 @@ class Brave extends Human
             parent::doAttack($enemy);
         }
         return true;
+    }
+
+    public function tookDamage($damage)
+    {
+        $this->hitPoint += $damage;
+        if ($this->hitPoint < 0) {
+            $this->hitPoint = 0;
+        }
     }
 }
