@@ -7,10 +7,17 @@ class Human
     private $hitPoint = 100;
     private $attackPoint = 20;
 
+    public function __construct($name, $hitPoint = 100, $attackPoint = 20)
+    {
+        $this->name = $name;
+        $hits->hitPoint = $hitPoint;
+        $this->attackPoint = $attackPoint;
+    }
+
     public function doAttack($enemy)
     {
-        echo "『" .$this->name . "』の攻撃！\n";
-        echo "【" . $enemy->name . "】に " . $this->attackPoint . " のダメージ！\n";
+        echo "『" .$this->getName() . "』の攻撃！\n";
+        echo "【" . $enemy->getName() . "】に " . $this->attackPoint . " のダメージ！\n";
         $enemy->tookDamage($this->attackPoint);
     }
 
@@ -25,11 +32,6 @@ class Human
     public function getName()
     {
         return $this->name;
-    }
-
-    public function setName($name)
-    {
-        $this->nmae = $name;
     }
 
     public function getHitPoint()
