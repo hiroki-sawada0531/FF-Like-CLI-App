@@ -2,9 +2,9 @@
 class Enemy
 {
     const MAX_HITPOINT = 50;
-    public $name;
-    public $hitPoint = 50;
-    public $attackPoint = 10;
+    private $name;
+    private $hitPoint = 50;
+    private $attackPoint = 10;
 
 public function doAttack($human)
 {
