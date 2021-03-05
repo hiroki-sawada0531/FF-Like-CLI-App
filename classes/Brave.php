@@ -2,6 +2,10 @@
 
 class Brave extends Human
 {
+    const MAX_HITPOINT = 120;
+    public $hitPoint = self::MAX_HITPOINT;
+    public $attackPoint = 30;
+
     public function doAttack($enemy)
     {
         if (rand(1,3) === 1) {
