@@ -10,7 +10,7 @@ class Human
     public function __construct($name, $hitPoint = 100, $attackPoint = 20)
     {
         $this->name = $name;
-        $hits->hitPoint = $hitPoint;
+        $this->hitPoint = $hitPoint;
         $this->attackPoint = $attackPoint;
     }
 

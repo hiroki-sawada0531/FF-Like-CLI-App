@@ -26,8 +26,13 @@ while(!$isFinishFlg) {
 
 echo "*** $turn ターン目 ***\n\n";
 
-echo $tiida->getName() . " : " . $tiida->getHitPoint() . "/" . $tiida::MAX_HITPOINT . "\n";
-echo $goblin->getName() . " : " . $goblin->getHitPoint() . "/" . $goblin::MAX_HITPOINT . "\n";
+foreach ($member as $member) {
+    echo $member->getName() . ":" . $member->getHitPoint(). "/" . $member::MAX_HITPOINT . "\n";
+}
+echo "\n";
+foreach ($enemies as $enemy) {
+    echo $enemy->getName() . ":" . $enemy->getHitPoint() . "/" . $enemy::MAX_HITPOINT . "\n";
+}
 echo "\n";
 
 foreach ($members as $member) {
@@ -65,10 +70,28 @@ if ($deathCnt === count($members)) {
     break;
 }
 
-$turn++;
-
+$deathCnt = 0;
+foreach ($enemies as $enemy)  {
+        if ($enemy->getHitPoint() > 0) {
+            $isFinishFlg = false;
+            break;
+        }
+        $deathCnt++;
+    }
+    if ($deathCnt === count($enemies)) {
+        $isFinishFlg = true;
+        echo "♪♪♪ファンファーレ♪♪♪\n\n";
+        break;
+    }
 }
 
+$turn++;
+
 echo "★★★ 戦闘終了 ★★★\n\n";
-echo $tiida->getName() . " : " . $tiida->getHitPoint() . "/" . $tiida::MAX_HITPOINT . "\n";
-echo $goblin->getName() . " : " . $goblin->getHitPoint() . "/" . $goblin::MAX_HITPOINT . "\n\n";
+foreach ($members as $member) {
+    echo $member->getName() . ":" . $member->getHitPoint() . "/" . $member::MAX_HITPOINT . "\n";
+}
+echo "\n";
+foreach ($enemies as $enemy) {
+    echo $enemy->getName() . ":" . $enemy->getHitPoint() . "/" . $enemy::MAX_HITPOINT . "\n";
+}
