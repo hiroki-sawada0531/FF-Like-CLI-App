@@ -1,7 +1,5 @@
 <?php
 
-// echo "処理のはじまりはじまり〜！\n\n";
-
 require_once('./classes/Human.php');
 require_once('./classes/Enemy.php');
 require_once('./classes/Brave.php');
@@ -26,7 +24,7 @@ while(!$isFinishFlg) {
 
 echo "*** $turn ターン目 ***\n\n";
 
-foreach ($member as $member) {
+foreach ($members as $member) {
     echo $member->getName() . ":" . $member->getHitPoint(). "/" . $member::MAX_HITPOINT . "\n";
 }
 echo "\n";
@@ -36,21 +34,17 @@ foreach ($enemies as $enemy) {
 echo "\n";
 
 foreach ($members as $member) {
-    $enemyIndex = rand(0,count($enemies) -1);
-    $enemy = $enemies[$enemyIndex];
     if (get_class($member) == "WhiteMage") {
-        $member->doAttackWhiteMage($enemy,$member);
+        $attackResult = $member->doAttackWhiteMage($enemies,$members);
     } else {
-        $member->doAttack($enemy);
+        $attackResult = $member->doAttack($enemies);
     }
     echo "\n";
 }
 echo "\n";
 
 foreach($enemies as $enemy) {
-    $memberIndex = rand(0,count($members)-1);
-    $member = $members[$memberIndex];
-    $enemy->doAttack($member);
+    $enemy->doAttack($members);
     echo "\n";
 }
 
@@ -83,9 +77,9 @@ foreach ($enemies as $enemy)  {
         echo "♪♪♪ファンファーレ♪♪♪\n\n";
         break;
     }
+    $turn++;
 }
 
-$turn++;
 
 echo "★★★ 戦闘終了 ★★★\n\n";
 foreach ($members as $member) {

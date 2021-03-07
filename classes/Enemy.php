@@ -27,8 +27,16 @@ class Enemy
         return $this->attackPoint;
     }
 
-public function doAttack($human)
+public function doAttack($humans)
 {
+
+    if ($this->hitPoint <= 0) {
+        return false;
+    }
+
+    $humanIndex = rand(0,count($humans)-1);
+    $human = $humans[$humanIndex];
+
     echo "『" . $this->getName() . "』の攻撃！\n";
     echo "【" . $human->getName() . "】に" . $this->attackPoint . "のダメージ！\n";
     $human->tookDamage($this->attackPoint);
