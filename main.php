@@ -20,7 +20,9 @@ $enemies[] = new Enemy('モルボル', 30);
 
 $turn = 1;
 
-while ($tiida->getHitPoint() > 0 && $goblin->getHitPoint() > 0) {
+$isFinishFlg = false;
+
+while(!$isFinishFlg) {
 
 echo "*** $turn ターン目 ***\n\n";
 
@@ -40,8 +42,28 @@ foreach ($members as $member) {
 }
 echo "\n";
 
-$goblin->doAttack($tiida);
+foreach($enemies as $enemy) {
+    $memberIndex = rand(0,count($members)-1);
+    $member = $members[$memberIndex];
+    $enemy->doAttack($member);
+    echo "\n";
+}
+
 echo "\n";
+
+$deathCnt = 0;
+foreach ($members as $member) {
+    if ($member->getHitPoint() > 0) {
+        $isFinishFlg = false;
+        break;
+    }
+    $deathCnt++;
+}
+if ($deathCnt === count($members)) {
+    $isFinishFlg = true;
+    echo "GAME OVER ....\n\n";
+    break;
+}
 
 $turn++;
 
