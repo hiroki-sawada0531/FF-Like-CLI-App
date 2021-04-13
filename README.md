@@ -36,14 +36,12 @@ https://www.techpit.jp/courses/137
 1.プロジェクトのクローン
 
 <br>
-```https://github.com/hiroki-sawada0531/FF-Like-CLI-App.git```
+https://github.com/hiroki-sawada0531/FF-Like-CLI-App.git
 <br>
 
 2.開発環境を立ち上げ
 
-<br>
 ```cd FF-Like-CLI-App-master``` git cloneをしてきたディレクトリの直下まで移動。
-<br>
 
 3.main.phpを実行
 <br>
