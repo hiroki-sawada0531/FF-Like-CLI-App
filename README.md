@@ -35,7 +35,6 @@ https://www.techpit.jp/courses/137
 
 1.プロジェクトのクローン
 
-<br>
 https://github.com/hiroki-sawada0531/FF-Like-CLI-App.git
 <br>
 
