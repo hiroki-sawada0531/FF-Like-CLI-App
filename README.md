@@ -2,10 +2,8 @@
 
 <img src="https://user-images.githubusercontent.com/69971751/114513597-510f5c80-9c75-11eb-9a90-cdde5edaca7a.png" width=100%>
 
-## :clap:学習教材と製作者様
+## :clap:学習教材
 https://www.techpit.jp/courses/137
-(※この教材は有料です。)
-<br>講師:ymatsuza 様
 
 ## :octocat:開発環境
 
